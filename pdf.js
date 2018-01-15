@@ -14750,10 +14750,16 @@ var Preferences = {
   }.bind(this));
  },
  _writeToStorage: function preferences_writeToStorage(prefObj) {
-  return Promise.resolve();
+   return new Promise(function (resolve) {
+     localStorage.setItem('pdfjs.preferences', JSON.stringify(prefObj));
+     resolve();
+   });
  },
  _readFromStorage: function preferences_readFromStorage(prefObj) {
-  return Promise.resolve();
+   return new Promise(function (resolve) {
+     var readPrefs = JSON.parse(localStorage.getItem('pdfjs.preferences'));
+     resolve(readPrefs);
+   });
  },
  reset: function preferencesReset() {
   return this.initializedPromise.then(function () {
@@ -14808,18 +14814,6 @@ var Preferences = {
    return defaultValue;
   }.bind(this));
  }
-};
-Preferences._writeToStorage = function (prefObj) {
- return new Promise(function (resolve) {
-  localStorage.setItem('pdfjs.preferences', JSON.stringify(prefObj));
-  resolve();
- });
-};
-Preferences._readFromStorage = function (prefObj) {
- return new Promise(function (resolve) {
-  var readPrefs = JSON.parse(localStorage.getItem('pdfjs.preferences'));
-  resolve(readPrefs);
- });
 };
 exports.Preferences = Preferences;
 

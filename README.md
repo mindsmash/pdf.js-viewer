@@ -1,3 +1,5 @@
+This is a forked version of legalthings' pdf.js-viewer.
+
 # PDF.js viewer
 
 [PDF.js](https://mozilla.github.io/pdf.js/) is a Portable Document Format (PDF) library that is built with HTML5.
